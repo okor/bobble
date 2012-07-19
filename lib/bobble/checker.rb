@@ -1,3 +1,5 @@
+require 'net/https'
+
 require 'bobble/notifier/twilio'
 require 'bobble/notifier/google_voice'
 require 'bobble/notifier/gmail'
@@ -40,6 +42,7 @@ module Bobble
         uri = URI.parse(url)
         http = Net::HTTP.new(uri.host, uri.port)
         request = Net::HTTP::Get.new(uri.request_uri)
+        http.use_ssl = (uri.scheme == "https")
 
         if options[:request_headers]
           options[:request_headers].each do |k,v|
