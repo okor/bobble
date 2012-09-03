@@ -30,10 +30,12 @@ module Bobble
           response = http_request(url, options)
           assert_success(response, options)
           puts "Successful!: #{url}"
+          puts "some other message!"
 
         rescue Exception => e
           message = "FAILED: #{url} - #{e.message}"
           puts message
+          puts "fail message"
           assert_failure(response, options)
 
           self.send_notification(message, url)
