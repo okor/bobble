@@ -2,7 +2,7 @@ require 'rake'
 
 Gem::Specification.new do |s|
   s.name        = 'bobble'
-  s.version     = '0.1.3'
+  s.version     = '0.1.4'
   s.date        = '2012-09-02'
   s.summary     = "Bobble"
   s.description = "For pinging your web services (any URL) & freely or cheaply getting email/SMS notifications when they're down."

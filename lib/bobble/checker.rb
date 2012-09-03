@@ -34,6 +34,7 @@ module Bobble
         rescue Exception => e
           ## Why isn't this running?
           set_to_down(options)
+          puts "I should be setting to down"
           message = "FAILED: #{url} - #{e.message}"
           puts message
 
