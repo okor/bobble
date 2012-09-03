@@ -35,6 +35,11 @@ module Bobble
           ## Why isn't this running?
           set_to_down(options)
           puts "I should be setting to down"
+
+          if (defined? options)
+            puts "Options is defined"
+          end
+
           message = "FAILED: #{url} - #{e.message}"
           puts message
 
