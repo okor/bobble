@@ -32,9 +32,9 @@ module Bobble
           puts "Successful!: #{url}"
 
         rescue Exception => e
-          message = "Super FAILED: #{url} - #{e.message}"
+          set_to_down(options)
+          message = "FAILED: #{url} - #{e.message}"
           puts message
-          assert_failure(options)
 
           self.send_notification(message, url)
         end
@@ -55,13 +55,11 @@ module Bobble
         return http.request(request)
       end
 
-      def assert_failure(options)
-
+      def set_to_down(options)
         if options[:failure_callback]
           puts "updating record to DOWN status, id of #{options[:record_id].to_s}"
           options[:failure_callback].call(options[:record_id])
         end
-
       end
 
       # raises an exception if not successful
