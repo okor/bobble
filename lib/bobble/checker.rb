@@ -32,6 +32,7 @@ module Bobble
           puts "Successful!: #{url}"
 
         rescue Exception => e
+          ## Why isn't this running?
           set_to_down(options)
           message = "FAILED: #{url} - #{e.message}"
           puts message
