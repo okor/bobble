@@ -35,6 +35,7 @@ module Bobble
           puts message
 
           self.send_notification(message, url)
+          return message
         end
       end
 
