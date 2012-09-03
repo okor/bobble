@@ -31,17 +31,10 @@ module Bobble
           assert_success(response, options)
           puts "Successful!: #{url}"
 
-          if options[:success_callback]
-            options[:success_callback].call(:record_id)
-          end
-
         rescue Exception => e
           message = "FAILED: #{url} - #{e.message}"
           puts message
-
-          if options[:failure_callback]
-            options[:failure_callback].call(:record_id)
-          end
+          assert_failure(response, options)
 
           self.send_notification(message, url)
         end
@@ -62,8 +55,20 @@ module Bobble
         return http.request(request)
       end
 
+      def assert_failure(response, options)
+
+        if options[:failure_callback]
+          options[:failure_callback].call(:record_id)
+        end
+
+      end
+
       # raises an exception if not successful
       def assert_success(response, options)
+
+        if options[:success_callback]
+          options[:success_callback].call(:record_id)
+        end
 
         if options[:success_status]
           unless response.code.to_i == options[:success_status].to_i
