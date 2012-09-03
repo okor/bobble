@@ -60,7 +60,7 @@ module Bobble
       def assert_failure(response, options)
 
         if options[:failure_callback]
-          options[:failure_callback].call(:record_id)
+          options[:failure_callback].call(options[:record_id])
         end
 
       end
@@ -69,7 +69,7 @@ module Bobble
       def assert_success(response, options)
 
         if options[:success_callback]
-          options[:success_callback].call(:record_id)
+          options[:success_callback].call(options[:record_id])
         end
 
         if options[:success_status]
